@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             x:Class="Assignment2.PlayerPage"
+             Title="Players">
+    <StackLayout Orientation="Vertical" HorizontalOptions="End" >
+        <SearchBar
+                    TextChanged="SearchBar_TextChanged"
+                    Placeholder="Enter players name"
+                    WidthRequest="320"
+            HorizontalOptions="Center"/>
+        <!-- Page Title -->
+        <Label 
+            Text="List of NBA Players"
+            TextColor="Orange" 
+            HorizontalOptions="Center" 
+            FontSize="Large" 
+            FontAttributes="Bold"/>
+        <CollectionView 
+            x:Name="playerList"
+            SelectionMode="Single"
+            SelectionChanged="playerDetails">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="3"
+                       Source="{Binding imageURL}"
+                       Aspect="AspectFill"
+                       WidthRequest="150" />
+                        <Label Grid.Column="1"
+                       Text="{Binding fullName}"
+                       FontSize="18"
+                       FontAttributes="Bold" />
+                        <Label Grid.Column="1"
+                               Grid.Row="1">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Position: " FontAttributes="Bold"/>
+                                    <Span Text="{Binding teamSitesOnly.posFull}"/>
+                                    <Span Text="{x:Static system:Environment.NewLine}"/>
+                                    <Span Text="Years Pro: " FontAttributes="Bold"/>
+                                    <Span Text="{Binding yearsPro}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

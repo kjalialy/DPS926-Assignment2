@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assignment2.FavouriteTeams">
+    <StackLayout Orientation="Vertical" HorizontalOptions="End" >
+        <!-- Page Title -->
+        <Label 
+            Text="List of NBA Teams"
+            TextColor="Orange" 
+            HorizontalOptions="Center" 
+            FontSize="Large" 
+            FontAttributes="Bold"/>
+        <CollectionView 
+            x:Name="teamList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                   IconImageSource="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/VisualEditor_-_Icon_-_Remove.svg/1200px-VisualEditor_-_Icon_-_Remove.svg.png"
+                                   BackgroundColor="LightPink"
+                                   Invoked="OnDeleteSwipeItemInvoked"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="2"
+                       Source="{Binding imageURL}"
+                       Aspect="AspectFill"
+                       WidthRequest="120" />
+                            <Label Grid.Column="1"
+                       Text="{Binding fullName}"
+                       FontSize="18"
+                       FontAttributes="Bold" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

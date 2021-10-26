@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             x:Class="Assignment2.PlayerDetails">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Image x:Name="image" Grid.Row="0" VerticalOptions="Start" />
+
+
+        <StackLayout Grid.Row="0" BackgroundColor="White" VerticalOptions="End">
+            <Frame CornerRadius="40" Style="{StaticResource stlMainFrame}" BackgroundColor="#e0dede">
+
+                <Grid Padding="25,10,25,0" RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="playerName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontAttributes="Bold" TextColor="Black" FontSize="30"/>
+                    <Label x:Name="teamName" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="#a5a2a2" FontSize="18"/>
+                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span TextColor="Black" Text="College: " FontAttributes="Bold" />
+                                <Span x:Name="lastAffliation" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span TextColor="Black" Text="Height: " FontAttributes="Bold" />
+                                <Span x:Name="height" />
+                                <Span TextColor="Black" Text=" | Weight: " FontAttributes="Bold" />
+                                <Span x:Name="weight" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span TextColor="Black" Text="Jersey Number: " FontAttributes="Bold" />
+                                <Span x:Name="jersey" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span TextColor="Black" Text="Position: " FontAttributes="Bold" />
+                                <Span x:Name="position" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label TextColor="Black" Grid.Row="6" Grid.Column="0" Text="Points" Style="{StaticResource stlBoardTitle}" />
+                    <Label x:Name="pts" Grid.Row="7" Grid.Column="0"  Style="{StaticResource stlBoardDesc}"/>
+
+                    <Label TextColor="Black" Grid.Row="6" Grid.Column="1" Text="Rebounds" Style="{StaticResource stlBoardTitle}"/>
+                    <Label x:Name="rbs" Grid.Row="7" Grid.Column="1" Style="{StaticResource stlBoardDesc}"/>
+
+                    <Label TextColor="Black" Grid.Row="6" Grid.Column="2" Text="Assists" Style="{StaticResource stlBoardTitle}"/>
+                    <Label x:Name="asts" Grid.Row="7" Grid.Column="2" Style="{StaticResource stlBoardDesc}"/>
+
+                    <Button x:Name="btnAdd" Clicked="addPlayerToDB" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White" BackgroundColor="#2193f3" Text="Add to favourite" Margin="0,20,0,2" FontAttributes="Bold" FontSize="17" HeightRequest="45">
+                      
+                    </Button>
+                    <Button x:Name="btnRemove" Clicked="removePlayerFromDB" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White" BackgroundColor="Red" Text="Remove from favourite" Margin="0,20,0,2" FontAttributes="Bold" FontSize="17" HeightRequest="45">
+
+                    </Button>
+                </Grid>
+            </Frame>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

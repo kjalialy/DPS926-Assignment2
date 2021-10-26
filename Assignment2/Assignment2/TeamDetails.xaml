@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             x:Class="Assignment2.TeamDetails">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Image x:Name="image" Grid.Row="0" VerticalOptions="Start" Aspect="AspectFit"/>
+
+
+        <StackLayout Grid.Row="0" BackgroundColor="White" VerticalOptions="End">
+            <Frame CornerRadius="40" Style="{StaticResource stlMainFrame}" BackgroundColor="#e0dede">
+
+                <Grid Padding="25,10,25,0" RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="teamName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontAttributes="Bold" TextColor="Black" FontSize="30"/>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span TextColor="Black" Text="Conference: " FontAttributes="Bold" />
+                                <Span x:Name="conference" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span TextColor="Black" Text="Division: " FontAttributes="Bold" />
+                                <Span x:Name="division" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <CollectionView 
+                        Grid.Row="3"
+                        Grid.ColumnSpan="4"
+                        x:Name="playersList"
+                        Grid.RowSpan="2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.RowSpan="3"
+                                       Source="{Binding imageURL}"
+                                       Aspect="AspectFill"
+                                       WidthRequest="150"
+                                       HeightRequest="80"/>
+                                    <Label Grid.Column="1"
+                                       Text="{Binding fullName}"
+                                       FontSize="18"
+                                       FontAttributes="Bold" />
+                                    <Label Grid.Column="1"
+                                        Grid.Row="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Position: " FontAttributes="Bold"/>
+                                                <Span Text="{Binding teamSitesOnly.posFull}"/>
+                                                <Span Text="{x:Static system:Environment.NewLine}"/>
+                                                <Span Text="Years Pro: " FontAttributes="Bold"/>
+                                                <Span Text="{Binding yearsPro}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Button x:Name="btnAdd"  VerticalOptions="Center" Clicked="addTeamToDB" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White" BackgroundColor="#2193f3" Text="Add to favourite" Margin="0,20,0,2" FontAttributes="Bold" FontSize="17" HeightRequest="45">
+
+                    </Button>
+                    <Button x:Name="btnRemove" VerticalOptions="Center" Clicked="removeTeamFromDB" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White" BackgroundColor="Red" Text="Remove from favourite" Margin="0,20,0,2" FontAttributes="Bold" FontSize="17" HeightRequest="45">
+
+                    </Button>
+                </Grid>
+            </Frame>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             x:Class="Assignment2.FavouritePlayers">
+
+    <StackLayout Orientation="Vertical" HorizontalOptions="End" >
+        <!-- Page Title -->
+        <Label 
+            Text="List of NBA Players"
+            TextColor="Orange" 
+            HorizontalOptions="Center" 
+            FontSize="Large" 
+            FontAttributes="Bold"/>
+        <CollectionView 
+            x:Name="playerList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                   IconImageSource="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/VisualEditor_-_Icon_-_Remove.svg/1200px-VisualEditor_-_Icon_-_Remove.svg.png"
+                                   BackgroundColor="LightPink"
+                                   Invoked="OnDeleteSwipeItemInvoked"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="3"
+                           Source="{Binding imageURL}"
+                           Aspect="AspectFill"
+                           WidthRequest="150" />
+                            <Label Grid.Column="1"
+                           Text="{Binding fullName}"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+                            <Label Grid.Column="1"
+                                   Grid.Row="1">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Position: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding posFull}"/>
+                                        <Span Text="{x:Static system:Environment.NewLine}"/>
+                                        <Span Text="Years Pro: " FontAttributes="Bold"/>
+                                        <Span Text="{Binding yearsPro}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid> 
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

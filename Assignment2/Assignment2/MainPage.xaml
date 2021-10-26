@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assignment2.MainPage"
+             Title="NBA Application">
+    <ContentPage.Content>
+
+        <StackLayout
+            VerticalOptions="CenterAndExpand" 
+            HorizontalOptions="CenterAndExpand">
+            <Image x:Name="backgroundImage" Source="https://cdn.nba.com/manage/2020/10/NBA20Secondary20Logo-784x462.jpg" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"/>
+            <Button Text="Players"
+                BackgroundColor="Pink"
+                TextColor="White"
+                Clicked="MoveToPlayersPage">
+            </Button>
+            <Button Text="Teams"
+                BackgroundColor="Pink"
+                TextColor="White"
+               Clicked="MoveToTeamsPage">
+            </Button>
+            <Button Text="Favourite Players"
+                BackgroundColor="Pink"
+                TextColor="White"
+                Clicked="MoveToFavouritePlayersPage"
+               >
+            </Button>
+            <Button Text="Favourite Teams"
+                BackgroundColor="Pink"
+                TextColor="White"
+                Clicked="MoveToFavouriteTeamsPage"
+               >
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
