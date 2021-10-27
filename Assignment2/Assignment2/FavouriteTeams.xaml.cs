@@ -24,6 +24,7 @@ namespace Assignment2
             teamList.ItemsSource = await App.Database.GetTeamsAsync();
         }
 
+        // to delete a team, slide to the right and click on the "Delete" button
         private async void OnDeleteSwipeItemInvoked(object sender, SelectedItemChangedEventArgs e)
         {
             SwipeItem item = sender as SwipeItem;
