@@ -16,7 +16,7 @@ namespace Assignment2
             {
                 if (database == null)
                 {
-                    database = new DatabaseManager(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Players.db3"));
+                    database = new DatabaseManager();
                 }
                 return database;
             }

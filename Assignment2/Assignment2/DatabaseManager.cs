@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Assignment2
 {
@@ -10,22 +11,22 @@ namespace Assignment2
     {
         readonly SQLiteAsyncConnection database;
 
-        public DatabaseManager(string dbPath)
+        public DatabaseManager()
         {
-            database = new SQLiteAsyncConnection(dbPath);
+            database = DependencyService.Get<SQLiteDBInterface>().createSQLiteDB();
             database.CreateTableAsync<PlayerDB>().Wait();
             database.CreateTableAsync<TeamObj>().Wait();
         }
 
         public Task<List<PlayerDB>> GetPlayersAsync()
         {
-            //Get all notes.
+            //Get all players.
             return database.Table<PlayerDB>().ToListAsync();
         }
 
         public Task<PlayerDB> GetPlayerAsync(string id)
         {
-            // Get a specific note.
+            // Get a specific player.
             return database.Table<PlayerDB>()
                             .Where(i => i.personId == id)
                             .FirstOrDefaultAsync();
@@ -33,25 +34,25 @@ namespace Assignment2
 
         public Task<int> AddPlayerAsync(PlayerDB player)
         {
-            // Save a new note.
+            // Save a new player in DB.
             return database.InsertAsync(player);
         }
 
         public Task<int> RemovePlayerAsync(PlayerDB player)
         {
-            // remove a note.
+            // remove a player.
             return database.DeleteAsync(player);
         }
 
         public Task<List<TeamObj>> GetTeamsAsync()
         {
-            //Get all notes.
+            //Get all teams.
             return database.Table<TeamObj>().ToListAsync();
         }
 
         public Task<TeamObj> GetTeamAsync(string id)
         {
-            // Get a specific note.
+            // Get a specific team.
             return database.Table<TeamObj>()
                             .Where(i => i.teamId == id)
                             .FirstOrDefaultAsync();
@@ -59,13 +60,13 @@ namespace Assignment2
 
         public Task<int> AddTeamAsync(TeamObj team)
         {
-            // Save a new note.
+            // Save a new team in DB.
             return database.InsertAsync(team);
         }
 
         public Task<int> RemoveTeamAsync(TeamObj team)
         {
-            // remove a note.
+            // remove a team.
             return database.DeleteAsync(team);
         }
     }

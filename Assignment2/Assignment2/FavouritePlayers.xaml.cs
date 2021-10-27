@@ -25,6 +25,7 @@ namespace Assignment2
             playerList.ItemsSource = await App.Database.GetPlayersAsync();
         }
 
+        // to delete a player, slide to the right and click on the "Delete" button
         private async void OnDeleteSwipeItemInvoked(object sender, SelectedItemChangedEventArgs e)
         {
             SwipeItem item = sender as SwipeItem;
